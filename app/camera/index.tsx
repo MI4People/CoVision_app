@@ -1,21 +1,5 @@
-import { Text, View, StyleSheet } from "react-native";
+import CameraTestFinder from "@/app/camera/componets/Camera/CameraTestFinder";
 
 export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+  return <CameraTestFinder />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 16,
-    textAlign: "center",
-  },
-});
