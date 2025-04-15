@@ -15,7 +15,7 @@ import { SpeechService } from "../services/speechService";
 
 export default function VoiceScreen() {
   const [recognizedText, setRecognizedText] = React.useState<string>("");
- 
+
   useEffect(() => {
     const sub = DeviceEventEmitter.addListener(
       newCommandRecognizedEvent,
@@ -33,11 +33,19 @@ export default function VoiceScreen() {
 
   return (
     <View style={styles.container}>
-      <Button title="Negativ" onPress={() => SpeechService.speak("Ihr Test ist negativ!")} />
-      <Button title="Positiv" onPress={() => SpeechService.speak("Ihr Test ist positiv!")} />
+      <Button
+        title="Negativ"
+        onPress={() => SpeechService.speak("Ihr Test ist negativ!")}
+      />
+      <Button
+        title="Positiv"
+        onPress={() => SpeechService.speak("Ihr Test ist positiv!")}
+      />
       <Button
         title="Nicht analysiert"
-        onPress={() => SpeechService.speak("Ihr Test konnte nicht analysiert werden!")}
+        onPress={() =>
+          SpeechService.speak("Ihr Test konnte nicht analysiert werden!")
+        }
       />
 
       <View style={styles.spacer} />
