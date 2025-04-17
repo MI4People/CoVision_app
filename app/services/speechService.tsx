@@ -1,8 +1,8 @@
 import * as Speech from "expo-speech";
-import { Locale } from "@/app/services/constants";
+import { locale } from "./locale";
 
 export class SpeechService {
   static speak(text: string) {
-    Speech.speak(text, { language: Locale.German });
+    Speech.speak(text, { language: locale });
   }
 }
