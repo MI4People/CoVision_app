@@ -10,8 +10,8 @@ import {
 import {
   VoiceCommandService,
   newCommandRecognizedEvent,
-} from "../services/voiceCommandService";
-import { SpeechService } from "../services/speechService";
+} from "@/src/services/voiceCommandService";
+import { SpeechService } from "@/src/services/speechService";
 
 export default function VoiceScreen() {
   const [recognizedText, setRecognizedText] = React.useState<string>("");

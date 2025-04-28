@@ -22,7 +22,7 @@ import {
 } from "react-native-vision-camera";
 import { useState } from "react";
 import { useRunOnJS } from "react-native-worklets-core";
-import { useCallOnceStable } from "@/lib/useCallOnceStable";
+import { useCallOnceStable } from "@/src/lib/identifyTest/useCallOnceStable";
 
 const paint = Skia.Paint();
 const border = Skia.Paint();
@@ -98,7 +98,7 @@ function useShrinkImage() {
   };
 }
 
-function findRectangularBrightShape(
+export function findRectangularBrightShape(
   image: Uint8Array<ArrayBufferLike>,
   height: number,
   width: number,

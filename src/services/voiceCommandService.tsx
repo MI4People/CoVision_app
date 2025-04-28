@@ -1,7 +1,7 @@
 import Voice from "@react-native-voice/voice";
 import { DeviceEventEmitter } from "react-native";
 import { Audio, AVPlaybackNativeSource } from "expo-av";
-import { ValidCommands } from "@/app/services/validCommands";
+import { ValidCommands } from "@/src/services/validCommands";
 import { locale } from "./locale";
 
 export const newCommandRecognizedEvent = "new.command.recognized";

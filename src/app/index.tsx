@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Link href="/camera" style={styles.link}>
+      <Link href="/root" style={styles.link}>
         <Text>Camera</Text>
       </Link>
       <Link href="/voice" style={styles.link}>
