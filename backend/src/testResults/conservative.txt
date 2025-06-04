@@ -1,0 +1,55 @@
+Analyze the provided image of a medical rapid test and respond only with a JSON object in this exact format:
+{
+  "result": "positive" | "negative" | "unknown",
+  "confidence": 0.0 - 1.0,
+  "type": "covid" | "pregnancy" | "other"
+}
+- specically look for the test result line and control line
+  - two lines are present, the test is positive
+  - one line is present, the test is negative
+- "result" must be one of "positive", "negative", or "unknown".
+- "positive indicates the presence of the condition being tested for (e.g., pregnancy, COVID-19).
+- "negative" indicates the absence of the condition being tested for.
+- "unknown" indicates that the result cannot be determined from the image (e.g., unclear image, test not visible).
+- "confidence" is a decimal between 0 (no confidence) and 1 (full confidence).
+- if the test is not lying perfectly flat in front of the camera, set "result" to "unknown" and "confidence" to 0.
+- be extra careful about positive results, if any uncertainty, mark as "unknown", rather than risking a false positive.
+- Do not include any text or markdown formatting, only the JSON.
+
+
+┌─────────┬───────────────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────┬────────────┬────────┐
+│ (index) │ file                                                                  │ result                                                                      │ expected   │ status │
+├─────────┼───────────────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┼────────────┼────────┤
+│ 0       │ 'covid/negative/boson_negative_real_018.png'                          │ '{\n  "result": "negative",\n  "confidence": 0.92,\n  "type": "covid"\n}'   │ 'negative' │ 'PASS' │
+│ 1       │ 'covid/negative/hotgen_negative_005.jpg'                              │ '{\n  "result": "unknown",\n  "confidence": 0.0,\n  "type": "covid"\n}'     │ 'negative' │ 'FAIL' │
+│ 2       │ 'covid/negative/hotgen_negative_020.jpg'                              │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'negative' │ 'FAIL' │
+│ 3       │ 'covid/negative/safecare_negative_018.jpg'                            │ '{"result":"negative","confidence":0.9,"type":"covid"}'                     │ 'negative' │ 'PASS' │
+│ 4       │ 'covid/negative/safecare_negative_024.jpg'                            │ '{"result":"negative","confidence":0.9,"type":"covid"}'                     │ 'negative' │ 'PASS' │
+│ 5       │ 'covid/negative/safecare_negative_025.jpg'                            │ '{"result":"negative","confidence":0.92,"type":"covid"}'                    │ 'negative' │ 'PASS' │
+│ 6       │ 'covid/negative/safecare_negative_032.jpg'                            │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'negative' │ 'FAIL' │
+│ 7       │ 'covid/positive/1.png'                                                │ '{"result":"positive","confidence":0.9,"type":"covid"}'                     │ 'positive' │ 'PASS' │
+│ 8       │ 'covid/positive/2.png'                                                │ '{"result":"positive","confidence":0.93,"type":"covid"}'                    │ 'positive' │ 'PASS' │
+│ 9       │ 'covid/positive/hotgen_positive_vinegard_017.jpg'                     │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'positive' │ 'FAIL' │
+│ 10      │ 'covid/positive/hygisun_positive_vinegard_007.jpg'                    │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'positive' │ 'FAIL' │
+│ 11      │ 'covid/positive/hygisun_positive_vinegard_007_cropped.jpg'            │ '{\n  "result": "positive",\n  "confidence": 0.92,\n  "type": "covid"\n}'   │ 'positive' │ 'PASS' │
+│ 12      │ 'covid/positive/hygisun_positive_vinegard_008.jpg'                    │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'positive' │ 'FAIL' │
+│ 13      │ 'covid/positive/hygisun_positive_vinegard_008_cropped.jpg'            │ '{\n  "result": "unknown",\n  "confidence": 0.0,\n  "type": "covid"\n}'     │ 'positive' │ 'FAIL' │
+│ 14      │ 'covid/positive/hygisun_positive_vinegard_009.jpg'                    │ '{\n  "result": "unknown",\n  "confidence": 0.0,\n  "type": "covid"\n}'     │ 'positive' │ 'FAIL' │
+│ 15      │ 'covid/positive/hygisun_positive_vinegard_009_cropped.jpg'            │ '{"result":"positive","confidence":0.75,"type":"covid"}'                    │ 'positive' │ 'PASS' │
+│ 16      │ 'covid/positive/hygisun_positive_vinegard_017.jpg'                    │ '{"result":"unknown","confidence":0.0,"type":"covid"}'                      │ 'positive' │ 'FAIL' │
+│ 17      │ 'covid/positive/hygisun_positive_vinegard_020.jpg'                    │ '{"result":"positive","confidence":0.9,"type":"covid"}'                     │ 'positive' │ 'PASS' │
+│ 18      │ 'covid/positive/hygisun_positive_vinegard_020_cropped.jpg'            │ '{"result":"positive","confidence":0.9,"type":"covid"}'                     │ 'positive' │ 'PASS' │
+│ 19      │ 'covid/positive/safecare_positive_liquid_010.jpg'                     │ '{"result":"positive","confidence":0.78,"type":"covid"}'                    │ 'positive' │ 'PASS' │
+│ 20      │ 'covid/positive/safecare_positive_pen_007.jpg'                        │ '{"result":"positive","confidence":0.92,"type":"covid"}'                    │ 'positive' │ 'PASS' │
+│ 21      │ 'covid/positive/safecare_positive_pen_030.jpg'                        │ '{"result":"positive","confidence":0.92,"type":"covid"}'                    │ 'positive' │ 'PASS' │
+│ 22      │ 'pregnancy/negative/34315435-negativer-schwangerschaftstest-Q3BG.jpg' │ '{"result":"unknown","confidence":0.0,"type":"pregnancy"}'                  │ 'negative' │ 'FAIL' │
+│ 23      │ 'pregnancy/negative/i81swfmqQpXB5JNHNKaGHfFe6Vdv9LBc_med.jpg'         │ '{\n  "result": "unknown",\n  "confidence": 0.0,\n  "type": "pregnancy"\n}' │ 'negative' │ 'FAIL' │
+│ 24      │ 'pregnancy/negative/istockphoto-1201149949-612x612 (1).jpg'           │ '{"result":"negative","confidence":0.90,"type":"pregnancy"}'                │ 'negative' │ 'PASS' │
+│ 25      │ 'pregnancy/positive/3774679_noscale_1ArrXd_34wMpE.jpg'                │ '{"result":"unknown","confidence":0.0,"type":"pregnancy"}'                  │ 'positive' │ 'FAIL' │
+│ 26      │ 'pregnancy/positive/IMG_5856 (1).jpg'                                 │ '{"result":"positive","confidence":0.95,"type":"pregnancy"}'                │ 'positive' │ 'PASS' │
+│ 27      │ 'pregnancy/positive/IMG_5856.jpg'                                     │ '{"result":"positive","confidence":0.95,"type":"pregnancy"}'                │ 'positive' │ 'PASS' │
+│ 28      │ 'pregnancy/positive/Urine_pregnancy_test_(positive).png'              │ '{"result":"positive","confidence":0.95,"type":"pregnancy"}'                │ 'positive' │ 'PASS' │
+│ 29      │ 'pregnancy/positive/image.jpg'                                        │ '{"result":"unknown","confidence":0.0,"type":"pregnancy"}'                  │ 'positive' │ 'FAIL' │
+│ 30      │ 'pregnancy/positive/istockphoto-1201149949-612x612.jpg'               │ '{"result":"positive","confidence":0.90,"type":"pregnancy"}'                │ 'positive' │ 'PASS' │
+│ 31      │ 'pregnancy/positive/positive.jpg'                                     │ '{\n  "result": "unknown",\n  "confidence": 0.0,\n  "type": "pregnancy"\n}' │ 'positive' │ 'FAIL' │
+└─────────┴───────────────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────┴────────────┴────────┘

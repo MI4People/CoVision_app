@@ -39,5 +39,11 @@ yarn-error.*
 
 .idea
 
-/ios/
-/android/
+ios/
+android/
+apiKey.ts
+
+.env*
+/backend/.serverless
+
+/frontend/notes.md
