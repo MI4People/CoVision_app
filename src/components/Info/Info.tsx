@@ -8,7 +8,7 @@ interface InfoProps {
 }
 
 const announcements: Record<AppState, string> = {
-  identifying: "Suche Test. Platzieren Sie den Test vor der Kamera",
+  reset: "Suche Test. Platzieren Sie den Test vor der Kamera",
   waitingForResults: "Test gefunden. Prüfe Ergebnisse",
   resultPositive: "Ihr Test ist positiv",
   resultNegative: "Ihr Test ist negativ",

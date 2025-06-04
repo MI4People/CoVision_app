@@ -12,17 +12,23 @@ import {
   useCameraPermission,
 } from "react-native-vision-camera";
 
-interface Camera {
+export interface Camera {
   device: CameraDevice | undefined;
   hasPermission: boolean;
-  ref: MutableRefObject<Camera | null>;
+  ref: MutableRefObject<VisionCamera | null>;
   takePhoto: () => Promise<string>;
   requestPermission: () => Promise<boolean>;
 }
 
 export function useCamera() {
   const camera = useRef<VisionCamera | null>(null);
-  const device = useCameraDevice("back");
+  const device = useCameraDevice("back", {
+    physicalDevices: [
+      "ultra-wide-angle-camera",
+      "wide-angle-camera",
+      "telephoto-camera",
+    ],
+  });
   const { hasPermission, requestPermission } = useCameraPermission();
 
   const takePhoto = useCallback(async () => {
@@ -35,15 +41,14 @@ export function useCamera() {
     requestPermission();
   }, [requestPermission]);
 
-  return useMemo(
-    () =>
-      <Camera>{
-        hasPermission,
-        device,
-        ref: camera,
-        takePhoto,
-        requestPermission,
-      },
+  return useMemo<Camera>(
+    () => ({
+      hasPermission,
+      device,
+      ref: camera,
+      takePhoto,
+      requestPermission,
+    }),
     [camera, takePhoto, requestPermission, hasPermission, device],
   );
 }

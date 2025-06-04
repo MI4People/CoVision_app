@@ -1,8 +1,7 @@
 import Voice from "@react-native-voice/voice";
 import { DeviceEventEmitter } from "react-native";
 import { Audio, AVPlaybackNativeSource } from "expo-av";
-import { ValidCommands } from "@/src/services/validCommands";
-import { locale } from "./locale";
+import { ValidCommands } from "@/src/services/constants";
 
 export const newCommandRecognizedEvent = "new.command.recognized";
 
@@ -31,7 +30,7 @@ export class VoiceCommandService {
 
   static async start() {
     try {
-      await Voice.start(locale);
+      await Voice.start("de-DE");
     } catch (err) {
       console.error("failed to start voice recognition:", err);
     }

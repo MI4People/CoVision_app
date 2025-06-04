@@ -18,3 +18,12 @@ These lines need to be added to Info.plist
 <key>NSSpeechRecognitionUsageDescription</key>
 <string>Allow $(PRODUCT_NAME) to access voice recognition to carry out your voice commands.</string>
 ```
+
+## Required api key 
+You need to set the `apiKey` variable to your OpenAI API key.
+
+to do this, create a file in [gptClient](src/services/identifierClient/gptClient)/apiKey.ts
+
+```typescript
+export const apiKey = "<your OpenAI API key>";
+```

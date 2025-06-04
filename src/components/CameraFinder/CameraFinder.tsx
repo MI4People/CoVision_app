@@ -1,4 +1,4 @@
-import { useCamera } from "@/src/components/CameraFinder/useCamera";
+import { Camera } from "@/src/components/CameraFinder/useCamera";
 import { StyleSheet, Text } from "react-native";
 import {
   Camera as VisionCamera,
@@ -9,14 +9,14 @@ import { FC } from "react";
 interface CameraFinderProps {
   frameProcessor: DrawableFrameProcessor;
   isActive: boolean;
+  camera: Camera;
 }
 
 export const CameraFinder: FC<CameraFinderProps> = ({
   frameProcessor,
   isActive,
+  camera,
 }) => {
-  const camera = useCamera();
-
   if (!camera.hasPermission) {
     return <Text>No permission</Text>;
   }

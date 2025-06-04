@@ -23,17 +23,35 @@ export class AppStateMachine {
   }
 
   positive() {
+    if (this.state !== "waitingForResults") {
+      return this.clone();
+    }
     this.setState("resultPositive");
     return this.clone();
   }
 
   negative() {
+    if (this.state !== "waitingForResults") {
+      return this.clone();
+    }
     this.setState("resultNegative");
     return this.clone();
   }
 
   error() {
+    if (this.state !== "waitingForResults") {
+      return this.clone();
+    }
     this.setState("error");
+    return this.clone();
+  }
+
+  reset() {
+    if (this.state === "identifying") {
+      return this.clone();
+    }
+
+    this.setState("identifying");
     return this.clone();
   }
 

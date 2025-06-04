@@ -173,10 +173,9 @@ export function findRectangularBrightShape(
       minRectRatio > 2.5 &&
       minRectRatio < 4
     ) {
-      const peri = OpenCV.invoke("arcLength", contour, true);
       const approx = OpenCV.createObject(ObjectType.PointVector);
 
-      OpenCV.invoke("approxPolyDP", contour, approx, 0.01 * peri.value, true);
+      OpenCV.invoke("approxPolyDP", contour, approx, 4, true);
 
       greatestPolygon = approx;
       greatestArea = area;

@@ -15,6 +15,7 @@ export const useAppFlow = (useStateMachine = useGlobalAppStateMachine) => {
 
   return {
     state: stateMachine.state,
+    reset: () => setStateMachine(stateMachine.reset()),
     identified: () => setStateMachine(stateMachine.identified()),
     positive: () => setStateMachine(stateMachine.positive()),
     negative: () => setStateMachine(stateMachine.negative()),

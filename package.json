@@ -37,6 +37,7 @@
     "expo-font": "~13.0.4",
     "expo-haptics": "~14.0.1",
     "expo-linking": "~7.0.5",
+    "expo-localization": "~16.0.1",
     "expo-router": "~4.0.20",
     "expo-speech": "~13.0.1",
     "expo-splash-screen": "~0.29.22",
@@ -45,6 +46,7 @@
     "expo-system-ui": "~4.0.9",
     "expo-web-browser": "~14.0.2",
     "jotai": "^2.12.3",
+    "openai": "^5.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.9",
@@ -58,8 +60,7 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "react-native-worklets-core": "^1.5.0",
-    "vision-camera-resize-plugin": "^3.2.0",
-    "expo-localization": "~16.0.1"
+    "vision-camera-resize-plugin": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
