@@ -10,6 +10,9 @@ export default function Index() {
       <Link href="/voice" style={styles.link}>
         <Text>Voice</Text>
       </Link>
+      <Link href="/webview" style={styles.link}>
+        <Text>Webview</Text>
+      </Link>
     </View>
   );
 }

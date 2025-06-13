@@ -1,0 +1,140 @@
+[
+  {
+    "file": "testData/negative/1.png",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/2.png",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/2_scaled.png",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/3.png",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/boson_negative_real_018.png",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/hotgen_negative_005.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/hotgen_negative_017.jpg",
+    "result": "unknown",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/negative/hotgen_negative_020.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/safecare_negative_018.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/safecare_negative_024.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/safecare_negative_025.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/negative/safecare_negative_032.jpg",
+    "result": "negative",
+    "expected": "negative",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/1.png",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/2.png",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/hotgen_positive_vinegard_017.jpg",
+    "result": "negative",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/positive/hygisun_positive_vinegard_007.jpg",
+    "result": "negative",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/positive/hygisun_positive_vinegard_008.jpg",
+    "result": "negative",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/positive/hygisun_positive_vinegard_009.jpg",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/hygisun_positive_vinegard_017.jpg",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/hygisun_positive_vinegard_020.jpg",
+    "result": "negative",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/positive/safecare_positive_liquid_010.jpg",
+    "result": "negative",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "testData/positive/safecare_positive_pen_007.jpg",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  },
+  {
+    "file": "testData/positive/safecare_positive_pen_030.jpg",
+    "result": "positive",
+    "expected": "positive",
+    "status": "PASS"
+  }
+]

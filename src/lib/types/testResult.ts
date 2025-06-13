@@ -1,1 +1,4 @@
-export type TestResult = "positive" | "negative" | "unknown";
+export type TestResult = {
+  result: "positive" | "negative" | "unknown" | "ERROR";
+  confidence: number;
+};
