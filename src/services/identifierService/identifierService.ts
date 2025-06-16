@@ -1,12 +1,12 @@
-import { TestResult } from "@/src/lib/types/testResult";
 import {
   identifierClient,
   IdentifierClient,
+  TestResult,
 } from "@/src/services/identifierClient/client";
 import * as FileSystem from "expo-file-system";
 
 export class IdentifierService {
-  constructor(private client: IdentifierClient) {}
+  constructor(private readonly client: IdentifierClient) {}
 
   public async identifyTest(pathToPhoto: string): Promise<TestResult> {
     const base64Image = await FileSystem.readAsStringAsync(

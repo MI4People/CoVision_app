@@ -30,7 +30,7 @@ export const CameraFinder: FC<CameraFinderProps> = ({
       style={StyleSheet.absoluteFill}
       device={camera.device}
       isActive={isActive}
-      photo
+      photo={true}
       fps={5}
       frameProcessor={frameProcessor}
       ref={camera.ref}

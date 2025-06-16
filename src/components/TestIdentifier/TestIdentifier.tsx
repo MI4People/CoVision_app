@@ -6,6 +6,7 @@ import { CameraFinder } from "@/src/components/CameraFinder/CameraFinder";
 import { useCamera } from "@/src/components/CameraFinder/useCamera";
 import { identifierService } from "@/src/services/identifierService/identifierService";
 import { useCallback } from "react";
+import { TestResult } from "@/src/services/identifierClient/client";
 
 const useHandleIdentification = (
   positive: () => void,
@@ -13,7 +14,8 @@ const useHandleIdentification = (
   error: () => void,
 ) =>
   useCallback(
-    (result: "positive" | "negative" | "unknown") => {
+    ({ result }: TestResult) => {
+      console.log("Handling identification result:", result);
       if (result === "positive") {
         return positive();
       }
@@ -41,10 +43,15 @@ export default function TestIdentifier() {
     if (state !== "identifying") {
       return;
     }
+
     identified();
+
     console.log("take photo");
     const path = await camera.takePhoto();
+
+    console.log("start identifying test at path:", path);
     const result = await identifierService.identifyTest(path);
+
     console.log("Test identified:", result);
     handleIdentification(result);
   }, [camera, handleIdentification, identified, state]);

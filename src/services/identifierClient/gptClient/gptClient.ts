@@ -35,7 +35,7 @@ export class GptClient implements IdentifierClient {
     const response = await this.callApi(base64Url);
     if (!response) {
       console.error("No response from GPT API");
-      return "unknown";
+      return resultUnknown();
     }
 
     return this.parse(response);
@@ -67,11 +67,8 @@ export class GptClient implements IdentifierClient {
 
   private parse(response: string) {
     try {
-      const parsedResponse = JSON.parse(response) as {
-        result: string;
-        confidence: number;
-      };
-      return parsedResponse ?? {};
+      const parsedResponse = JSON.parse(response) as TestResult;
+      return parsedResponse ?? resultUnknown();
     } catch (error) {
       console.error(
         "Error parsing response:",
@@ -79,7 +76,11 @@ export class GptClient implements IdentifierClient {
         "response text:",
         response,
       );
-      return "unknown";
+      return resultUnknown();
     }
   }
+}
+
+function resultUnknown(): TestResult {
+  return { result: "unknown", confidence: 0.0 };
 }

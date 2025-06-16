@@ -2,7 +2,7 @@ import { GptClient } from "./gptClient";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import sharp from "sharp";
-import { TestResult } from "@/src/lib/types/testResult";
+import { TestResult } from "@/src/services/identifierClient/gptClient/testResult";
 
 const client = new GptClient();
 
