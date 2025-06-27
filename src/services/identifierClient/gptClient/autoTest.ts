@@ -1,8 +1,7 @@
 import { GptClient } from "./gptClient";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import sharp from "sharp";
-import { TestResult } from "@/src/services/identifierClient/gptClient/testResult";
+import sharp from "sharp"; // add sharp for image processing
 
 const client = new GptClient();
 
@@ -13,15 +12,12 @@ interface Result {
   status: string;
 }
 
-const testFolders = [
-  // { dir: "testData/covid/negative", expected: "negative" },
-  // { dir: "testData/covid/positive", expected: "positive" },
-  { dir: "testData/covid/unknown", expected: "unknown" },
-  // { dir: "testData/pregnancy/negative", expected: "negative" },
-  // { dir: "testData/pregnancy/positive", expected: "positive" },
-];
-
 async function runTests() {
+  const testFolders = [
+    { dir: "testData/negative", expected: "negative" },
+    { dir: "testData/positive", expected: "positive" },
+  ];
+
   const results: Result[] = [];
 
   for (const { dir, expected } of testFolders) {
@@ -40,10 +36,18 @@ async function runTests() {
     }
   }
 
-  const sortedResults = sortResults(results);
+  printResults(results);
+  writeResults(results);
+}
 
-  printResults(sortedResults);
-  writeResults(sortedResults);
+function printResults(results: Result[]) {
+  console.log("\nTest Results:");
+  console.table(results, ["file", "result", "expected", "status"]);
+}
+
+function writeResults(results: Result[]) {
+  const resultsFilePath = path.resolve("testResults.json");
+  fs.writeFileSync(resultsFilePath, JSON.stringify(results, null, 2));
 }
 
 async function checkFile(filePath: string, expected: string) {
@@ -52,76 +56,32 @@ async function checkFile(filePath: string, expected: string) {
     return;
   }
 
-  const base64Data = await readFileWithEnhancements(filePath);
+  const base64Data = await readFileWithEnhancements(filePath); // updated
   const result = await getResult(base64Data);
-  const status = result.result === expected ? "PASS" : "FAIL";
-  return { file: filePath, ...result, expected, status };
+  const status = result === expected ? "PASS" : "FAIL";
+  return { file: filePath, result, expected, status };
 }
 
-async function readFileWithEnhancements(fileName: string): Promise<string> {
-  try {
-    const buffer = fs.readFileSync(fileName);
-    const processedImage = await sharp(buffer)
-      .modulate({ saturation: 1.5 }) // increase saturation by 50%
-      .linear(1.2, -25) // increase contrast: multiply by 1.2, shift by -25
-      .toBuffer();
-
-    // writeImage(fileName, processedImage);
-
-    return processedImage.toString("base64");
-  } catch (error) {
-    console.error(`Error processing file ${fileName}:`, error);
-    return Promise.resolve("");
-  }
-}
-
-async function getResult(base64Data: string): Promise<TestResult> {
+async function getResult(base64Data: string): Promise<string> {
   try {
     return await client.getResult(`data:image/png;base64,${base64Data}`);
   } catch (error) {
     console.error("Error in getResult:", error);
-    return Promise.resolve({ result: "ERROR", confidence: 0 });
+    return Promise.resolve("ERROR");
   }
 }
 
-function sortResults(results: Result[]) {
-  return results
-    .toSorted((a, b) => a.status.localeCompare(b.status))
-    .map((result) => ({
-      ...result,
-      file: path.relative(process.cwd(), result.file),
-    }));
-}
-
-function printResults(results: Result[]) {
-  console.log("\nTest Results:");
-  console.table(results, [
-    "file",
-    "result",
-    "confidence",
-    "expected",
-    "status",
-  ]);
-
-  const failCount = results.filter((r) => r.status === "FAIL").length;
-
-  console.log(
-    `Fail rate: ${failCount}/ ${results.length} (${(failCount / results.length) * 100}%)`,
-  );
-}
-
-function writeResults(results: Result[]) {
-  const resultsFilePath = path.resolve("testResults.json");
-  fs.writeFileSync(resultsFilePath, JSON.stringify(results, null, 2));
-}
-
-function writeImage(fileName: string, image: Buffer<ArrayBufferLike>) {
-  const processedPath = path.join(path.dirname(fileName), "processed");
-  if (!fs.existsSync(processedPath)) {
-    fs.mkdirSync(processedPath);
-  }
-  const processedFile = path.join(processedPath, path.basename(fileName));
-  fs.writeFileSync(processedFile, image);
+/**
+ * Reads an image file, applies contrast and saturation increase, returns base64 string.
+ */
+async function readFileWithEnhancements(fileName: string): Promise<string> {
+  const buffer = fs.readFileSync(fileName);
+  // Increase contrast and saturation
+  const processed = await sharp(buffer)
+    .modulate({ saturation: 1.5 }) // increase saturation by 50%
+    .linear(1.2, -25) // increase contrast: multiply by 1.2, shift by -25
+    .toBuffer();
+  return processed.toString("base64");
 }
 
 runTests();

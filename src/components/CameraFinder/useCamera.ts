@@ -29,6 +29,7 @@ export function useCamera() {
       "telephoto-camera",
     ],
   });
+
   const { hasPermission, requestPermission } = useCameraPermission();
 
   const takePhoto = useCallback(async () => {
