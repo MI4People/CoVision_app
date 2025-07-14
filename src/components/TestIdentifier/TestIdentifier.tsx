@@ -44,10 +44,10 @@ export default function TestIdentifier() {
       return;
     }
 
-    identified();
-
     console.log("take photo");
     const path = await camera.takePhoto();
+
+    identified();
 
     console.log("start identifying test at path:", path);
     const result = await identifierService.identifyTest(path);

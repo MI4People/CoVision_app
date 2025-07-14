@@ -33,9 +33,14 @@ export function useCamera() {
   const { hasPermission, requestPermission } = useCameraPermission();
 
   const takePhoto = useCallback(async () => {
-    const result = await camera.current?.takePhoto();
-
-    return result?.path ?? "";
+    try {
+      const result = await camera.current?.takePhoto();
+      console.log("Foto aufgenommen:", result);
+      return result?.path ?? "";
+    } catch (e) {
+      console.error("Fehler beim Foto:", e);
+      return "";
+    }
   }, [camera]);
 
   useEffect(() => {
