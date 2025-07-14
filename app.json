@@ -20,7 +20,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "org.mi4people.CoVision"
+      "package": "org.mi4people.CoVision",
+      "minSdkVersion": 26
     },
     "web": {
       "bundler": "metro",

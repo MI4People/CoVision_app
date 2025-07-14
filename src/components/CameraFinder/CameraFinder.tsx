@@ -31,7 +31,8 @@ export const CameraFinder: FC<CameraFinderProps> = ({
       device={camera.device}
       isActive={isActive}
       photo={true}
-      fps={5}
+      format={camera.device.formats[0]}
+      fps={10}
       frameProcessor={frameProcessor}
       ref={camera.ref}
     />
