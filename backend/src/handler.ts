@@ -19,7 +19,7 @@ export const handle: APIGatewayProxyHandler = async (event) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(await client.getResult(base64Image)),
+    body: await client.getResult(base64Image),
     headers: {
       "Content-Type": "application/json",
     },
@@ -30,7 +30,7 @@ function isApiKeyValid(headers?: {
   [key: string]: string | undefined;
 }): boolean {
   const apiKeyHeader =
-    headers?.["api_key"] ?? headers?.["API_KEY"] ?? headers?.["Api-Key"];
+    headers?.["api_key"] ?? headers?.["API_KEY"] ?? headers?.["api-key"];
   const expectedApiKey = process.env.API_KEY;
   return !!apiKeyHeader && apiKeyHeader === expectedApiKey;
 }
