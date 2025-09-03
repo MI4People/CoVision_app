@@ -1,0 +1,194 @@
+[
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/boson_negative_real_018.png",
+    "result": "{\"result\":\"positive\",\"confidence\":0.85,\"type\":\"covid\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/hotgen_negative_005.jpg",
+    "result": "{\n  \"result\": \"negative\",\n  \"confidence\": 0.9,\n  \"type\": \"covid\"\n}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/hotgen_negative_020.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.92,\"type\":\"covid\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/safecare_negative_018.jpg",
+    "result": "{\n  \"result\": \"negative\",\n  \"confidence\": 0.95,\n  \"type\": \"covid\"\n}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/safecare_negative_024.jpg",
+    "result": "{\"result\":\"negative\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/safecare_negative_025.jpg",
+    "result": "{\"result\":\"negative\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/negative/safecare_negative_032.jpg",
+    "result": "{\"result\":\"negative\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/1.png",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.95,\n  \"type\": \"covid\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/2.png",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.95,\n  \"type\": \"covid\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hotgen_positive_vinegard_017.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.88,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_007.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.90,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_007_cropped.jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.95,\n  \"type\": \"covid\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_008.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.85,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_008_cropped.jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.92,\n  \"type\": \"covid\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_009.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.9,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_009_cropped.jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.9,\n  \"type\": \"covid\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_017.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_020.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/hygisun_positive_vinegard_020_cropped.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.96,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/safecare_positive_liquid_010.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.85,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/safecare_positive_pen_007.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/covid/positive/safecare_positive_pen_030.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"covid\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/negative/34315435-negativer-schwangerschaftstest-Q3BG.jpg",
+    "result": "{\"result\":\"negative\",\"confidence\":0.85,\"type\":\"pregnancy\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/negative/i81swfmqQpXB5JNHNKaGHfFe6Vdv9LBc_med.jpg",
+    "result": "{\"result\":\"negative\",\"confidence\":0.9,\"type\":\"pregnancy\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/negative/istockphoto-1201149949-612x612 (1).jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"pregnancy\"}",
+    "expected": "negative",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/3774679_noscale_1ArrXd_34wMpE.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.85,\"type\":\"pregnancy\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/IMG_5856 (1).jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.95,\n  \"type\": \"pregnancy\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/IMG_5856.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"pregnancy\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/Urine_pregnancy_test_(positive).png",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.97,\n  \"type\": \"pregnancy\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/image.jpg",
+    "result": "{\"result\":\"positive\",\"confidence\":0.95,\"type\":\"pregnancy\"}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/istockphoto-1201149949-612x612.jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.98,\n  \"type\": \"pregnancy\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  },
+  {
+    "file": "/Users/lback/code/projects/work/covision/CoVision_app/backend/src/testData/pregnancy/positive/positive.jpg",
+    "result": "{\n  \"result\": \"positive\",\n  \"confidence\": 0.95,\n  \"type\": \"pregnancy\"\n}",
+    "expected": "positive",
+    "status": "FAIL"
+  }
+]

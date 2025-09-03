@@ -14,8 +14,10 @@ interface Result {
 
 async function runTests() {
   const testFolders = [
-    { dir: "testData/negative", expected: "negative" },
-    { dir: "testData/positive", expected: "positive" },
+    { dir: "testData/covid/negative", expected: "negative" },
+    { dir: "testData/covid/positive", expected: "positive" },
+    { dir: "testData/pregnancy/negative", expected: "negative" },
+    { dir: "testData/pregnancy/positive", expected: "positive" },
   ];
 
   const results: Result[] = [];
@@ -28,10 +30,14 @@ async function runTests() {
     }
 
     const files = fs.readdirSync(folderPath);
-    for (const file of files) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      console.log(`Processing file ${i + 1} of ${files.length}: ${file}`);
+
       const result = await checkFile(path.join(folderPath, file), expected);
       if (!result) continue;
-
+      console.log(result);
       results.push(result);
     }
   }
@@ -56,13 +62,22 @@ async function checkFile(filePath: string, expected: string) {
     return;
   }
 
+  // check if directory
+  if (fs.lstatSync(filePath).isDirectory()) {
+    return;
+  }
+
   const base64Data = await readFileWithEnhancements(filePath); // updated
   const result = await getResult(base64Data);
-  const status = result === expected ? "PASS" : "FAIL";
-  return { file: filePath, result, expected, status };
+  const status = JSON.parse(result)?.result === expected ? "PASS" : "FAIL";
+
+  const parts = filePath.split(path.sep);
+  const fileDisplay = parts.slice(-3).join(path.sep); // last two folders + file name
+
+  return { file: fileDisplay, result, expected, status };
 }
 
-async function getResult(base64Data: string): Promise<string> {
+async function getResult(base64Data: string) {
   try {
     return await client.getResult(`data:image/png;base64,${base64Data}`);
   } catch (error) {

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "serverless offline"
+    "dev": "serverless offline",
+    "test": "export $(grep -v '^#' .env | xargs) && cd src && tsx apiTest.ts"
   },
   "keywords": [],
   "author": "",
