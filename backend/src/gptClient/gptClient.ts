@@ -70,21 +70,6 @@ export class GptClient {
       }),
     };
   }
-
-  private parse(response: string) {
-    try {
-      const parsedResponse = JSON.parse(response) as TestResult;
-      return parsedResponse ?? resultUnknown();
-    } catch (error) {
-      console.error(
-        "Error parsing response:",
-        error,
-        "response text:",
-        response,
-      );
-      return resultUnknown();
-    }
-  }
 }
 
 function resultUnknown(): TestResult {

@@ -3,6 +3,8 @@ import { StyleSheet, Text } from "react-native";
 import {
   Camera as VisionCamera,
   DrawableFrameProcessor,
+  FormatFilter,
+  useCameraFormat,
 } from "react-native-vision-camera";
 import { FC } from "react";
 
@@ -12,11 +14,23 @@ interface CameraFinderProps {
   camera: Camera;
 }
 
+const formatFilter: FormatFilter[] = [
+  {
+    fps: 10,
+    photoResolution: {
+      width: 1920,
+      height: 1080,
+    },
+  },
+];
+
 export const CameraFinder: FC<CameraFinderProps> = ({
   frameProcessor,
   isActive,
   camera,
 }) => {
+  const format = useCameraFormat(camera.device, formatFilter);
+
   if (!camera.hasPermission) {
     return <Text>No permission</Text>;
   }
@@ -31,7 +45,7 @@ export const CameraFinder: FC<CameraFinderProps> = ({
       device={camera.device}
       isActive={isActive}
       photo={true}
-      format={camera.device.formats[0]}
+      format={format}
       fps={10}
       frameProcessor={frameProcessor}
       ref={camera.ref}
