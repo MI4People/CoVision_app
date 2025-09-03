@@ -12,6 +12,7 @@ const serverlessConfig: AWS = {
     root: {
       handler: "src/handler.handle",
       events: [{ httpApi: { path: "/", method: "POST" } }],
+      timeout: 30, // extended timeout to 30 seconds
       environment: {
         OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY ?? "",
         API_KEY: process.env.API_KEY ?? "",

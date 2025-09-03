@@ -16,10 +16,12 @@ export const handle: APIGatewayProxyHandler = async (event) => {
 
   const body = event.body ? JSON.parse(event.body) : {};
   const base64Image = body.base64Image;
+  const responseBody = await client.getResult(base64Image);
+  console.log("Response from LLM client:", responseBody);
 
   return {
     statusCode: 200,
-    body: await client.getResult(base64Image),
+    body: responseBody,
     headers: {
       "Content-Type": "application/json",
     },

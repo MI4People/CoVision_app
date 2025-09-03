@@ -29,8 +29,16 @@ export class GptClient {
 
   async getResult(base64Url: string): Promise<string> {
     const request = this.buildRequest(base64Url);
+
     return await fetch("https://openrouter.ai/api/v1/chat/completions", request)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(
+            `HTTP error! status: ${res.status}, message: ${res.statusText}`,
+          );
+        }
+        return res.json();
+      })
       .then((res) => res?.choices?.[0]?.message?.content ?? "");
   }
 
@@ -42,7 +50,7 @@ export class GptClient {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
+        model: "gpt-5-mini",
         messages: [
           { role: "system", content: "You are a medical AI assistant." },
           {
