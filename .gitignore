@@ -45,3 +45,5 @@ apiKey.ts
 
 .env
 /backend/.serverless
+
+/notes.md

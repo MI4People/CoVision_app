@@ -1,5 +1,5 @@
-import { TestResult } from "@/src/services/identifierClient/gptClient/testResult";
 import { IdentifierClient } from "@/src/services/identifierClient/client";
+import { TestResult } from "@/src/services/identifierClient/testResult";
 
 export class DefaultIdentifierClient implements IdentifierClient {
   private readonly apiUrl: string;

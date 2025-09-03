@@ -1,7 +1,8 @@
 import { Camera } from "@/src/components/CameraFinder/useCamera";
-import { StyleSheet, Text } from "react-native";
+import { Image, StyleSheet, Text } from "react-native";
 import {
   Camera as VisionCamera,
+  CameraDeviceFormat,
   DrawableFrameProcessor,
   FormatFilter,
   useCameraFormat,
@@ -12,11 +13,12 @@ interface CameraFinderProps {
   frameProcessor: DrawableFrameProcessor;
   isActive: boolean;
   camera: Camera;
+  snappedPhoto?: string;
 }
 
 const formatFilter: FormatFilter[] = [
+  { fps: 10 },
   {
-    fps: 10,
     photoResolution: {
       width: 1920,
       height: 1080,
@@ -28,6 +30,7 @@ export const CameraFinder: FC<CameraFinderProps> = ({
   frameProcessor,
   isActive,
   camera,
+  snappedPhoto,
 }) => {
   const format = useCameraFormat(camera.device, formatFilter);
 
@@ -39,12 +42,17 @@ export const CameraFinder: FC<CameraFinderProps> = ({
     return <Text>No device</Text>;
   }
 
+  if (snappedPhoto) {
+    return <Image src={snappedPhoto} style={StyleSheet.absoluteFill} />;
+  }
+
   return (
     <VisionCamera
       style={StyleSheet.absoluteFill}
       device={camera.device}
       isActive={isActive}
       photo={true}
+      exposure={-1}
       format={format}
       fps={10}
       frameProcessor={frameProcessor}

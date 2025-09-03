@@ -5,7 +5,7 @@ import { useAppFlow } from "@/src/lib/appFlow/useAppFlow";
 import { CameraFinder } from "@/src/components/CameraFinder/CameraFinder";
 import { useCamera } from "@/src/components/CameraFinder/useCamera";
 import { identifierService } from "@/src/services/identifierService/identifierService";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { TestResult } from "@/src/services/identifierClient/client";
 
 const useHandleIdentification = (
@@ -32,6 +32,7 @@ const useHandleIdentification = (
 export default function TestIdentifier() {
   const { identified, error, negative, positive, reset, state } = useAppFlow();
   const camera = useCamera();
+  const [snappedPhoto, setSnappedPhoto] = useState<string>();
 
   const handleIdentification = useHandleIdentification(
     positive,
@@ -44,13 +45,13 @@ export default function TestIdentifier() {
       return;
     }
 
-    console.log("take photo");
     const path = await camera.takePhoto();
+    const url = `file://${path}`;
+    setSnappedPhoto(url);
 
     identified();
 
-    console.log("start identifying test at path:", path);
-    const result = await identifierService.identifyTest(path);
+    const result = await identifierService.identifyTest(url);
 
     console.log("Test identified:", result);
     handleIdentification(result);
@@ -60,7 +61,7 @@ export default function TestIdentifier() {
     if (state === "identifying") {
       return identify();
     }
-
+    setSnappedPhoto(undefined);
     return reset();
   }, [state, reset, identify]);
 
@@ -72,6 +73,7 @@ export default function TestIdentifier() {
         frameProcessor={findTestInFrame}
         isActive={state === "identifying"}
         camera={camera}
+        snappedPhoto={snappedPhoto}
       />
       <Info style={styles.info} />
     </Pressable>
