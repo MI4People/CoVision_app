@@ -1,7 +1,7 @@
-import { GptClient } from "./gptClient";
+import { GptClient } from "./gptClient/gptClient";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import sharp from "sharp"; // add sharp for image processing
+// import sharp from "sharp"; // add sharp for image processing
 
 const client = new GptClient();
 
@@ -77,11 +77,11 @@ async function getResult(base64Data: string): Promise<string> {
 async function readFileWithEnhancements(fileName: string): Promise<string> {
   const buffer = fs.readFileSync(fileName);
   // Increase contrast and saturation
-  const processed = await sharp(buffer)
-    .modulate({ saturation: 1.5 }) // increase saturation by 50%
-    .linear(1.2, -25) // increase contrast: multiply by 1.2, shift by -25
-    .toBuffer();
-  return processed.toString("base64");
+  // const processed = await sharp(buffer)
+  //   .modulate({ saturation: 1.5 }) // increase saturation by 50%
+  //   .linear(1.2, -25) // increase contrast: multiply by 1.2, shift by -25
+  //   .toBuffer();
+  return buffer.toString("base64");
 }
 
 runTests();
