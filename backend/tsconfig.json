@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "strict": true,
     "outDir": ".build",
-    "types": ["aws-sdk", "node"],
+    "types": ["node"],
   },
   "include": ["src"]
 }

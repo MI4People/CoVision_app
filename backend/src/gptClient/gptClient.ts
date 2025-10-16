@@ -14,6 +14,8 @@ export class GptClient {
   async getResult(base64Url: string): Promise<string> {
     const request = buildRequest(base64Url, this.apiKey);
 
+    console.log("sendong OpenRouter request", request);
+
     return await fetch("https://openrouter.ai/api/v1/chat/completions", request)
       .then((res) => this.processError(res))
       .then((res) => res.json())

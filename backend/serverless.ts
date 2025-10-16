@@ -10,7 +10,7 @@ const serverlessConfig: AWS = {
   },
   functions: {
     root: {
-      handler: "src/handler.handle",
+      handler: "src/handler.handler",
       events: [{ httpApi: { path: "/", method: "POST" } }],
       timeout: 30,
       environment: {
