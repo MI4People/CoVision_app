@@ -13,15 +13,15 @@
       "bundleIdentifier": "org.mi4people.CoVision",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "appleTeamId": "25DQUC4FFT"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "org.mi4people.CoVision",
-      "minSdkVersion": 26
+      "package": "org.mi4people.CoVision"
     },
     "web": {
       "bundler": "metro",
