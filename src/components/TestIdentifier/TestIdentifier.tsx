@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet } from "react-native";
-import { useFindTestFrameProcessor } from "@/src/lib/identifyTest/identifyTest";
+import { useFindTestFrameProcessor } from "@/src/lib/identifyTest/_identifyTest._ts";
 import { Info } from "@/src/components/Info/Info";
 import { useAppFlow } from "@/src/lib/appFlow/useAppFlow";
 import { CameraFinder } from "@/src/components/CameraFinder/CameraFinder";
@@ -65,12 +65,9 @@ export default function TestIdentifier() {
     return reset();
   }, [state, reset, identify]);
 
-  const findTestInFrame = useFindTestFrameProcessor(identify);
-
   return (
     <Pressable style={styles.container} onPress={handleClick}>
       <CameraFinder
-        frameProcessor={findTestInFrame}
         isActive={state === "identifying"}
         camera={camera}
         snappedPhoto={snappedPhoto}

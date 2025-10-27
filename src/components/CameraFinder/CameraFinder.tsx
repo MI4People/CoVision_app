@@ -2,7 +2,6 @@ import { Camera } from "@/src/components/CameraFinder/useCamera";
 import { Image, StyleSheet, Text } from "react-native";
 import {
   Camera as VisionCamera,
-  CameraDeviceFormat,
   DrawableFrameProcessor,
   FormatFilter,
   useCameraFormat,
@@ -10,7 +9,7 @@ import {
 import { FC } from "react";
 
 interface CameraFinderProps {
-  frameProcessor: DrawableFrameProcessor;
+  frameProcessor?: DrawableFrameProcessor;
   isActive: boolean;
   camera: Camera;
   snappedPhoto?: string;
