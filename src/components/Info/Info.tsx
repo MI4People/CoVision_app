@@ -8,7 +8,7 @@ interface InfoProps {
 }
 
 const announcements: Record<AppState, string> = {
-  reset: "Suche Test. Platzieren Sie den Test vor der Kamera",
+  identifying: "Suche Test. Platzieren Sie den Test vor der Kamera",
   waitingForResults: "Test gefunden. Prüfe Ergebnisse",
   resultPositive: "Ihr Test ist positiv",
   resultNegative: "Ihr Test ist negativ",
@@ -22,6 +22,8 @@ export const Info = ({ style }: InfoProps) => {
     AccessibilityInfo.announceForAccessibility(announcements[state]);
   }, [state]);
 
+  if (!announcements[state]) return null;
+
   return (
     <Text style={info(style)} role="alert">
       {announcements[state]}
@@ -31,5 +33,6 @@ export const Info = ({ style }: InfoProps) => {
 
 const info = (outerStyles?: TextStyle): StyleProp<TextStyle> => ({
   textAlign: "center",
+  backgroundColor: "#fff",
   ...outerStyles,
 });

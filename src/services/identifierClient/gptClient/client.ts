@@ -23,11 +23,20 @@ export class DefaultIdentifierClient implements IdentifierClient {
         base64Image: base64Url,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        console.log("error", res.status, ":", res.statusText);
+        return { result: "ERROR", confidence: 0 };
+      })
       .then((res) => {
         if (res.error) {
+          console.log("error", res.error);
           return { result: "ERROR", confidence: 0 };
         }
+
+        console.log("result:", res);
         return res as TestResult;
       });
   }

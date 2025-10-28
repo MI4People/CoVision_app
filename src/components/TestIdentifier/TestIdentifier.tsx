@@ -1,5 +1,4 @@
 import { Pressable, StyleSheet } from "react-native";
-import { useFindTestFrameProcessor } from "@/src/lib/identifyTest/_identifyTest._ts";
 import { Info } from "@/src/components/Info/Info";
 import { useAppFlow } from "@/src/lib/appFlow/useAppFlow";
 import { CameraFinder } from "@/src/components/CameraFinder/CameraFinder";
@@ -46,12 +45,11 @@ export default function TestIdentifier() {
     }
 
     const path = await camera.takePhoto();
-    const url = `file://${path}`;
-    setSnappedPhoto(url);
+    setSnappedPhoto(path);
 
     identified();
 
-    const result = await identifierService.identifyTest(url);
+    const result = await identifierService.identifyTest(path);
 
     console.log("Test identified:", result);
     handleIdentification(result);

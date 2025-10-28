@@ -43,7 +43,7 @@ yarn-error.*
 /android/
 apiKey.ts
 
-.env
+.env*
 /backend/.serverless
 
 /notes.md

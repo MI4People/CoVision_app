@@ -35,7 +35,7 @@ export function useCamera() {
   const takePhoto = useCallback(async () => {
     try {
       const result = await camera.current?.takePhoto();
-      console.log("Foto aufgenommen:", result);
+      console.log("Foto aufgenommen.");
       return result?.path ?? "";
     } catch (e) {
       console.error("Fehler beim Foto:", e);
