@@ -39,11 +39,11 @@ yarn-error.*
 
 .idea
 
-/ios/
-/android/
+/frontend/ios/
+/frontend/android/
 apiKey.ts
 
 .env*
 /backend/.serverless
 
-/notes.md
+/frontend/notes.md
