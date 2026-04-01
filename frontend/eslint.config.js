@@ -1,4 +1,3 @@
-import eslint from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tseslintParser from "@typescript-eslint/parser";
 import reactPlugin from "eslint-plugin-react";
@@ -7,12 +6,13 @@ import reactNativePlugin from "eslint-plugin-react-native";
 import prettierConfig from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 import globals from "globals";
+import {configs} from "@eslint/js";
 
 export default [
   {
     ignores: ["app-example/**/*"],
   },
-  eslint.configs.recommended,
+  configs.recommended,
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
