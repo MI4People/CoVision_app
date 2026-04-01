@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "expo start",
+    "submit:ios": "eas build --platform ios --auto-submit",
     "local:android": "expo run:android -- --device",
     "local:ios": "expo run:ios -- --device",
     "build-preview:android": "eas build --platform android --profile preview",
