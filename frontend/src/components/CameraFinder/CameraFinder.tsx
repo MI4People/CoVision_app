@@ -47,6 +47,7 @@ export const CameraFinder: FC<CameraFinderProps> = ({
 
   return (
     <VisionCamera
+      accessible={false}
       style={StyleSheet.absoluteFill}
       device={camera.device}
       isActive={isActive}

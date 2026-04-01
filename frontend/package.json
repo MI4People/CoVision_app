@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo run:android -- --device",
-    "ios": "expo run:ios -- --device",
-    "web": "expo start --web",
-    "test": "jest",
+    "local:android": "expo run:android -- --device",
+    "local:ios": "expo run:ios -- --device",
+    "build-preview:android": "eas build --platform android --profile preview",
+    "build-preview:ios": "eas build --platform ios --profile preview",
+    "build-production:android": "eas build --platform android --profile production",
+    "build-production:ios": "eas build --platform ios --profile production",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
